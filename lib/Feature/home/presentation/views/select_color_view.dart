@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:to_do_app/Core/style/colors/app_color.dart';
 import 'package:to_do_app/Core/utils/app_string.dart';
+import 'package:to_do_app/Feature/home/presentation/controller/task_cubit.dart';
 
 class SelectColorView extends StatefulWidget {
   const SelectColorView({super.key});
@@ -10,7 +11,6 @@ class SelectColorView extends StatefulWidget {
 }
 
 class _SelectColorViewState extends State<SelectColorView> {
-  int selectedIndex = 0;
   List<Color> allColors = [
     AppColor.red,
     AppColor.lightGreen,
@@ -41,9 +41,22 @@ class _SelectColorViewState extends State<SelectColorView> {
             itemBuilder: (context, index) {
               return Padding(
                 padding: const EdgeInsets.only(right: 8),
-                child: CircleAvatar(
-                  backgroundColor: allColors[index],
-                  radius: 16,
+                child: InkWell(
+                  onTap: () {
+                    setState(() {
+                      TaskCubit.instances.selectedColor = index;
+                    });
+                  },
+                  child: CircleAvatar(
+                    backgroundColor: allColors[index],
+                    radius: 16,
+                    child: (index == TaskCubit.instances.selectedColor)
+                        ? Icon(
+                            Icons.check,
+                            color: AppColor.white,
+                          )
+                        : null,
+                  ),
                 ),
               );
             },

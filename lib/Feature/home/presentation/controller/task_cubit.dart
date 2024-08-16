@@ -10,7 +10,7 @@ class TaskCubit extends Cubit<TaskState> {
   TextEditingController date = TextEditingController();
   TextEditingController startTime = TextEditingController();
   TextEditingController endTime = TextEditingController();
-
+  int selectedColor = 0;
   final GlobalKey<FormState> formkey = GlobalKey<FormState>();
 
   static TaskCubit instances = TaskCubit._();
