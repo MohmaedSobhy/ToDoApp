@@ -11,6 +11,8 @@ class TaskCubit extends Cubit<TaskState> {
   TextEditingController startTime = TextEditingController();
   TextEditingController endTime = TextEditingController();
 
+  final GlobalKey<FormState> formkey = GlobalKey<FormState>();
+
   static TaskCubit instances = TaskCubit._();
 
   TaskCubit._() : super(TaskInitial());
