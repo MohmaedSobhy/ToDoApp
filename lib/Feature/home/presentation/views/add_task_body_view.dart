@@ -29,7 +29,11 @@ class AddTaskBodyView extends StatelessWidget {
               ),
               CustomeButtonWidget(
                 title: AppString.createTask,
-                onTap: () {},
+                onTap: () {
+                  if (TaskCubit.instances.formkey.currentState!.validate()) {
+                    TaskCubit.instances.addTask();
+                  }
+                },
                 width: double.infinity,
                 backGround: AppColor.purble,
               )

@@ -12,55 +12,58 @@ class AddTaskFieldsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 5),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const SizedBox(height: 10),
-          Text(
-            AppString.title,
-            style: Theme.of(context).textTheme.displaySmall,
-          ),
-          const SizedBox(height: 4),
-          CustomeTextFormField(
-            hint: AppString.enterTitle,
-            controller: TaskCubit.instances.title,
-            validator: AppValidators.titleValidator,
-          ),
-          const SizedBox(height: 10),
-          Text(
-            AppString.note,
-            style: Theme.of(context).textTheme.displaySmall,
-          ),
-          const SizedBox(height: 4),
-          CustomeTextFormField(
-            hint: AppString.enterNote,
-            controller: TaskCubit.instances.note,
-            validator: AppValidators.noteValidator,
-          ),
-          const SizedBox(height: 10),
-          Text(
-            AppString.date,
-            style: Theme.of(context).textTheme.displaySmall,
-          ),
-          const SizedBox(height: 4),
-          CustomeTextFormField(
-            hint: AppString.enterDate,
-            controller: TaskCubit.instances.date,
-            validator: AppValidators.dateValidator,
-            suffixIcon: IconButton(
-              onPressed: () {},
-              icon: const Icon(
-                Icons.calendar_month,
+    return Form(
+      key: TaskCubit.instances.formkey,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 5),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const SizedBox(height: 10),
+            Text(
+              AppString.title,
+              style: Theme.of(context).textTheme.displaySmall,
+            ),
+            const SizedBox(height: 4),
+            CustomeTextFormField(
+              hint: AppString.enterTitle,
+              controller: TaskCubit.instances.title,
+              validator: AppValidators.titleValidator,
+            ),
+            const SizedBox(height: 10),
+            Text(
+              AppString.note,
+              style: Theme.of(context).textTheme.displaySmall,
+            ),
+            const SizedBox(height: 4),
+            CustomeTextFormField(
+              hint: AppString.enterNote,
+              controller: TaskCubit.instances.note,
+              validator: AppValidators.noteValidator,
+            ),
+            const SizedBox(height: 10),
+            Text(
+              AppString.date,
+              style: Theme.of(context).textTheme.displaySmall,
+            ),
+            const SizedBox(height: 4),
+            CustomeTextFormField(
+              hint: AppString.enterDate,
+              controller: TaskCubit.instances.date,
+              validator: AppValidators.dateValidator,
+              suffixIcon: IconButton(
+                onPressed: () {},
+                icon: const Icon(
+                  Icons.calendar_month,
+                ),
               ),
             ),
-          ),
-          const SizedBox(height: 10),
-          const SelectTimeView(),
-          const SizedBox(height: 10),
-          const SelectColorView(),
-        ],
+            const SizedBox(height: 10),
+            const SelectTimeView(),
+            const SizedBox(height: 10),
+            const SelectColorView(),
+          ],
+        ),
       ),
     );
   }
