@@ -6,11 +6,13 @@ class CustomeSelectTimeWidget extends StatelessWidget {
   final String title;
   final TextEditingController controller;
   final String? Function(String?)? validator;
+  final VoidCallback onTap;
   const CustomeSelectTimeWidget({
     super.key,
     required this.title,
     required this.controller,
     required this.validator,
+    required this.onTap,
   });
 
   @override
@@ -27,8 +29,9 @@ class CustomeSelectTimeWidget extends StatelessWidget {
           hint: title,
           controller: controller,
           validator: validator,
+          onTap: onTap,
           suffixIcon: IconButton(
-            onPressed: () {},
+            onPressed: onTap,
             icon: Icon(
               Icons.access_time_rounded,
               color: Colors.grey[200],
