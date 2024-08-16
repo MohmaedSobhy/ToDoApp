@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:to_do_app/Core/helper/app_validator.dart';
+import 'package:to_do_app/Core/helper/formate_date.dart';
+import 'package:to_do_app/Core/helper/select_time_picker.dart';
+import 'package:to_do_app/Core/style/colors/app_color.dart';
 import 'package:to_do_app/Core/utils/app_string.dart';
 import 'package:to_do_app/Feature/home/presentation/controller/task_cubit.dart';
 import 'package:to_do_app/Feature/home/presentation/views/select_time_view.dart';
@@ -50,11 +53,20 @@ class AddTaskFieldsView extends StatelessWidget {
             CustomeTextFormField(
               hint: AppString.enterDate,
               controller: TaskCubit.instances.date,
+              onTap: () async {
+                await selectDate(context).then((value) {
+                  if (value != null) {
+                    TaskCubit.instances.date.text = formateDate(value);
+                    ;
+                  }
+                });
+              },
               validator: AppValidators.dateValidator,
               suffixIcon: IconButton(
                 onPressed: () {},
-                icon: const Icon(
+                icon: Icon(
                   Icons.calendar_month,
+                  color: AppColor.white,
                 ),
               ),
             ),
