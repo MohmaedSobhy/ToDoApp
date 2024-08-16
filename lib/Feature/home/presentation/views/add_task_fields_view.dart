@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:to_do_app/Core/utils/app_string.dart';
+import 'package:to_do_app/Feature/home/presentation/controller/task_cubit.dart';
 import 'package:to_do_app/Feature/home/presentation/views/select_time_view.dart';
 import 'package:to_do_app/Feature/home/presentation/widgets/custome_text_form_field.dart';
 
@@ -21,8 +22,9 @@ class AddTaskFieldsView extends StatelessWidget {
             style: Theme.of(context).textTheme.displaySmall,
           ),
           const SizedBox(height: 4),
-          const CustomeTextFormField(
+          CustomeTextFormField(
             hint: AppString.enterTitle,
+            controller: TaskCubit.instances.title,
           ),
           const SizedBox(height: 10),
           Text(
@@ -30,8 +32,9 @@ class AddTaskFieldsView extends StatelessWidget {
             style: Theme.of(context).textTheme.displaySmall,
           ),
           const SizedBox(height: 4),
-          const CustomeTextFormField(
+          CustomeTextFormField(
             hint: AppString.enterNote,
+            controller: TaskCubit.instances.note,
           ),
           const SizedBox(height: 10),
           Text(
@@ -41,6 +44,7 @@ class AddTaskFieldsView extends StatelessWidget {
           const SizedBox(height: 4),
           CustomeTextFormField(
             hint: AppString.enterDate,
+            controller: TaskCubit.instances.date,
             suffixIcon: IconButton(
               onPressed: () {},
               icon: const Icon(
