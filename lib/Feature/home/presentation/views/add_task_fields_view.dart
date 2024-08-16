@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:to_do_app/Core/helper/app_validator.dart';
 import 'package:to_do_app/Core/utils/app_string.dart';
 import 'package:to_do_app/Feature/home/presentation/controller/task_cubit.dart';
 import 'package:to_do_app/Feature/home/presentation/views/select_time_view.dart';
@@ -25,6 +26,7 @@ class AddTaskFieldsView extends StatelessWidget {
           CustomeTextFormField(
             hint: AppString.enterTitle,
             controller: TaskCubit.instances.title,
+            validator: AppValidators.titleValidator,
           ),
           const SizedBox(height: 10),
           Text(
@@ -35,6 +37,7 @@ class AddTaskFieldsView extends StatelessWidget {
           CustomeTextFormField(
             hint: AppString.enterNote,
             controller: TaskCubit.instances.note,
+            validator: AppValidators.noteValidator,
           ),
           const SizedBox(height: 10),
           Text(
@@ -45,6 +48,7 @@ class AddTaskFieldsView extends StatelessWidget {
           CustomeTextFormField(
             hint: AppString.enterDate,
             controller: TaskCubit.instances.date,
+            validator: AppValidators.dateValidator,
             suffixIcon: IconButton(
               onPressed: () {},
               icon: const Icon(

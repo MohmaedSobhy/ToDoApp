@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:to_do_app/Core/helper/app_validator.dart';
 import 'package:to_do_app/Core/utils/app_string.dart';
 import 'package:to_do_app/Feature/home/presentation/controller/task_cubit.dart';
 import 'package:to_do_app/Feature/home/presentation/widgets/custome_select_time_widget.dart';
@@ -13,6 +14,7 @@ class SelectTimeView extends StatelessWidget {
         Expanded(
           child: CustomeSelectTimeWidget(
             title: AppString.startTime,
+            validator: AppValidators.startTimeValidator,
             controller: TaskCubit.instances.startTime,
           ),
         ),
@@ -22,6 +24,7 @@ class SelectTimeView extends StatelessWidget {
         Expanded(
           child: CustomeSelectTimeWidget(
             title: AppString.endTime,
+            validator: AppValidators.endTimeValidator,
             controller: TaskCubit.instances.startTime,
           ),
         )

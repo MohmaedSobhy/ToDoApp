@@ -5,8 +5,13 @@ import 'package:to_do_app/Feature/home/presentation/widgets/custome_text_form_fi
 class CustomeSelectTimeWidget extends StatelessWidget {
   final String title;
   final TextEditingController controller;
-  const CustomeSelectTimeWidget(
-      {super.key, required this.title, required this.controller});
+  final String? Function(String?)? validator;
+  const CustomeSelectTimeWidget({
+    super.key,
+    required this.title,
+    required this.controller,
+    required this.validator,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -21,6 +26,7 @@ class CustomeSelectTimeWidget extends StatelessWidget {
         CustomeTextFormField(
           hint: title,
           controller: controller,
+          validator: validator,
           suffixIcon: IconButton(
             onPressed: () {},
             icon: Icon(
