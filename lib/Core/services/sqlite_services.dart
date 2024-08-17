@@ -33,7 +33,7 @@ class AppData {
     await db.execute('CREATE TABLE Task ('
         '${ColumnKey.id} INTEGER PRIMARY KEY AUTOINCREMENT, '
         '${ColumnKey.title} TEXT NOT NULL, ${ColumnKey.note} TEXT NOT NULL, ${ColumnKey.startTime} TEXT NOT NULL,'
-        '${ColumnKey.endTime} TEXT NOT NULL, ${ColumnKey.date} TEXT NOT NULL, ${ColumnKey.state} INTEGER NOT NULL)');
+        '${ColumnKey.endTime} TEXT NOT NULL, ${ColumnKey.date} TEXT NOT NULL, ${ColumnKey.state} INTEGER NOT NULL, ${ColumnKey.color} INTEGER)');
   }
 
   //Insert in DB
@@ -43,13 +43,13 @@ class AppData {
     return result;
   }
 
-  // static updateDB({required TaskModel task, required String status}) async {
-  //   Database? dbClient = await db;
-  //   var result = await dbClient?.rawUpdate(
-  //       "Update Task SET title = '${task.title}', $columnTime = '${task.time}', $columnDate = '${task.date}', $columnStatus = '$status' Where $columnId = ${task.id}");
+  static updateDB({required int id}) async {
+    Database? dbClient = await db;
+    var result = await dbClient?.rawUpdate(
+        "Update Task SET ${ColumnKey.state} = 1  Where ${ColumnKey.id} = $id");
 
-  //   return result;
-  // }
+    return result;
+  }
 
   //Delete all of DB
   static deleteDB(int id) async {
