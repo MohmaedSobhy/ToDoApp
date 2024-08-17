@@ -9,8 +9,8 @@ class ToDoApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider.value(
-      value: TaskCubit.instances,
+    return BlocProvider(
+      create: (context) => TaskCubit.instances,
       child: MaterialApp(
         theme: AppTheme.appTheme,
         initialRoute: AppRoutes.splashScreen,

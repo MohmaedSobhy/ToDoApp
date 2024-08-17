@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:to_do_app/Core/style/colors/app_color.dart';
 import 'package:to_do_app/Core/utils/app_string.dart';
+import 'package:to_do_app/Feature/home/data/model/task_model.dart';
 import 'package:to_do_app/Feature/home/presentation/views/bottom_sheet_view.dart';
 
 class TaskItemWidget extends StatelessWidget {
-  const TaskItemWidget({super.key});
+  final TaskModel task;
+  const TaskItemWidget({super.key, required this.task});
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +32,7 @@ class TaskItemWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Task 1',
+                    task.title,
                     style: Theme.of(context).textTheme.displayMedium,
                   ),
                   const SizedBox(
@@ -47,7 +49,7 @@ class TaskItemWidget extends StatelessWidget {
                         width: 5,
                       ),
                       Text(
-                        '09:33 PM - 09:48 PM',
+                        '${task.startTime} - ${task.endTime}',
                         style: Theme.of(context).textTheme.displaySmall,
                       ),
                     ],
@@ -56,7 +58,7 @@ class TaskItemWidget extends StatelessWidget {
                     height: 10,
                   ),
                   Text(
-                    'Work Throw Hell',
+                    task.note,
                     style: Theme.of(context).textTheme.displayMedium,
                   ),
                 ],
@@ -71,7 +73,7 @@ class TaskItemWidget extends StatelessWidget {
             RotatedBox(
               quarterTurns: 3,
               child: Text(
-                AppString.todo,
+                (task.state == 1) ? AppString.complete : AppString.todo,
                 style: GoogleFonts.lato(
                   textStyle: Theme.of(context).textTheme.displaySmall,
                 ),

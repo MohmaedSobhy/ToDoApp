@@ -17,7 +17,13 @@ class AddTaskBodyView extends StatelessWidget {
         horizontal: 10,
         vertical: 5,
       ),
-      child: BlocBuilder<TaskCubit, TaskState>(
+      child: BlocConsumer<TaskCubit, TaskState>(
+        listener: (context, state) {
+          print(state);
+          if (state is AddTaskSuccefully) {
+            Navigator.pop(context);
+          }
+        },
         builder: (context, state) {
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,

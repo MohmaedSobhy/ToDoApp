@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
 import 'package:to_do_app/Core/services/column_key.dart';
 import 'package:to_do_app/Core/services/sqlite_services.dart';
+import 'package:to_do_app/Core/style/colors/app_color.dart';
 import 'package:to_do_app/Feature/home/data/model/task_model.dart';
 
 part 'task_state.dart';
@@ -24,19 +25,16 @@ class TaskCubit extends Cubit<TaskState> {
     emit(LoadingAddTask());
     try {
       await AppData.insertDB({
-        ColumnKey.title: title,
-        ColumnKey.note: note,
-        ColumnKey.startTime: startTime,
-        ColumnKey.endTime: endTime,
-        ColumnKey.date: date,
+        ColumnKey.title: title.text.toString(),
+        ColumnKey.note: note.text.toString(),
+        ColumnKey.startTime: startTime.text.toString(),
+        ColumnKey.endTime: endTime.text.toString(),
+        ColumnKey.date: date.text.toString(),
         ColumnKey.state: 0,
-        ColumnKey.color: Colors.white.value,
+        ColumnKey.color: AppColor.red.value,
       }).then((value) {
-        if (value == 1) {
-          emit(AddTaskSuccefully());
-        } else {
-          emit(AddTaskFailed());
-        }
+        loadAllTask();
+        emit(AddTaskSuccefully());
       });
     } catch (error) {
       emit(AddTaskFailed());
