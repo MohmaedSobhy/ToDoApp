@@ -44,14 +44,23 @@ class TaskCubit extends Cubit<TaskState> {
   }
 
   void updateTask({required int id}) async {
-    await AppData.updateDB(id: id).then((value) {
-      print(value);
-    });
+    await AppData.updateDB(id: id).then((value) {});
   }
 
   void completeTask() {}
 
-  void loadAllTask() {}
+  void loadAllTask() async {
+    emit(LoadingAddTask());
+    try {
+      await AppData.getAllToDoTask().then((tasks) {
+        allTask.clear();
+        allTask.addAll(tasks);
+      });
+      emit(SuccessFullyLoadTask());
+    } catch (error) {
+      emit(FailedLoadingTask());
+    }
+  }
 
   void deleteTask() {}
 }

@@ -6,6 +6,7 @@ import 'dart:async';
 import 'dart:io' as io;
 import 'package:path/path.dart';
 import 'package:to_do_app/Core/services/column_key.dart';
+import 'package:to_do_app/Feature/home/data/model/task_model.dart';
 
 class AppData {
   static Database? _db;
@@ -59,15 +60,13 @@ class AppData {
     return result;
   }
 
-  // // Get all rows in DB
-  // static Future<List<Task>> getAllToDoTask() async {
-  //   List<Task> todoTask = [];
-  //   Database? dbClient = await db;
-  //   var result = await dbClient!
-  //       .rawQuery("SELECT*FROM 'Task' WHERE $columnStatus='$toDoStatus'");
-  //   for (var task in result) {
-  //     todoTask.add(Task.fromMap(task));
-  //   }
-  //   return todoTask;
-  // }
+  static Future<List<TaskModel>> getAllToDoTask() async {
+    List<TaskModel> tasks = [];
+    Database? dbClient = await db;
+    var result = await dbClient!.rawQuery("SELECT*FROM 'Task'");
+    for (var task in result) {
+      tasks.add(TaskModel.fromJson(task));
+    }
+    return tasks;
+  }
 }
