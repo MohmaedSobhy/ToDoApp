@@ -60,13 +60,16 @@ class AppData {
     return result;
   }
 
-  static Future<List<TaskModel>> getAllToDoTask() async {
+  static Future<List<TaskModel>> getAllToDoTask(String date) async {
     List<TaskModel> tasks = [];
     Database? dbClient = await db;
-    var result = await dbClient!.rawQuery("SELECT*FROM 'Task'");
+    var result = await dbClient!.rawQuery("SELECT * FROM Task");
     for (var task in result) {
-      tasks.add(TaskModel.fromJson(task));
+      if (task[ColumnKey.date] == date) {
+        tasks.add(TaskModel.fromJson(task));
+      }
     }
+
     return tasks;
   }
 }

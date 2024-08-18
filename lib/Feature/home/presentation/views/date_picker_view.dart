@@ -1,6 +1,8 @@
 import 'package:date_picker_timeline/date_picker_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:to_do_app/Core/helper/formate_date.dart';
 import 'package:to_do_app/Core/style/colors/app_color.dart';
+import 'package:to_do_app/Feature/home/presentation/controller/task_cubit.dart';
 
 class DatePickerView extends StatelessWidget {
   const DatePickerView({super.key});
@@ -17,7 +19,7 @@ class DatePickerView extends StatelessWidget {
       dateTextStyle: Theme.of(context).textTheme.displaySmall!,
       dayTextStyle: Theme.of(context).textTheme.displaySmall!,
       onDateChange: (date) {
-        // New date selected
+        TaskCubit.instances.loadAllTask(date: formateDate(date));
       },
     );
   }

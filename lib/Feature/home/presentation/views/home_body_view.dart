@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
+import 'package:to_do_app/Core/helper/formate_date.dart';
 import 'package:to_do_app/Core/utils/app_string.dart';
 import 'package:to_do_app/Feature/home/presentation/controller/task_cubit.dart';
 import 'package:to_do_app/Feature/home/presentation/views/date_picker_view.dart';
@@ -12,7 +13,10 @@ class HomeBodyView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider.value(
-      value: TaskCubit.instances..loadAllTask(),
+      value: TaskCubit.instances
+        ..loadAllTask(
+          date: formateDate(DateTime.now()),
+        ),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
         child: Column(

@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
+import 'package:to_do_app/Core/helper/formate_date.dart';
 import 'package:to_do_app/Core/services/column_key.dart';
 import 'package:to_do_app/Core/services/sqlite_services.dart';
 import 'package:to_do_app/Core/style/colors/app_color.dart';
@@ -33,7 +34,9 @@ class TaskCubit extends Cubit<TaskState> {
         ColumnKey.state: 0,
         ColumnKey.color: AppColor.red.value,
       }).then((value) {
-        loadAllTask();
+        loadAllTask(
+          date: formateDate(DateTime.now()),
+        );
         emit(AddTaskSuccefully());
       });
     } catch (error) {
@@ -57,15 +60,17 @@ class TaskCubit extends Cubit<TaskState> {
     }
   }
 
-  void loadAllTask() async {
-    emit(LoadingAddTask());
+  void loadAllTask({required String date}) async {
+    emit(LoadingAllTask());
     try {
-      await AppData.getAllToDoTask().then((tasks) {
+      await AppData.getAllToDoTask(date).then((tasks) {
         allTask.clear();
         allTask.addAll(tasks);
       });
+
       emit(SuccessFullyLoadTask());
     } catch (error) {
+      print(error);
       emit(FailedLoadingTask());
     }
   }
