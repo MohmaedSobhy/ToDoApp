@@ -11,14 +11,6 @@ class SelectColorView extends StatefulWidget {
 }
 
 class _SelectColorViewState extends State<SelectColorView> {
-  List<Color> allColors = [
-    AppColor.red,
-    AppColor.lightGreen,
-    AppColor.darkGreen,
-    AppColor.deepBlue,
-    AppColor.brown,
-    AppColor.purble,
-  ];
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -37,7 +29,7 @@ class _SelectColorViewState extends State<SelectColorView> {
           height: MediaQuery.sizeOf(context).height * 0.05,
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
-            itemCount: allColors.length,
+            itemCount: TaskCubit.instances.allColors.length,
             itemBuilder: (context, index) {
               return Padding(
                 padding: const EdgeInsets.only(right: 8),
@@ -48,7 +40,7 @@ class _SelectColorViewState extends State<SelectColorView> {
                     });
                   },
                   child: CircleAvatar(
-                    backgroundColor: allColors[index],
+                    backgroundColor: TaskCubit.instances.allColors[index],
                     radius: 16,
                     child: (index == TaskCubit.instances.selectedColor)
                         ? Icon(

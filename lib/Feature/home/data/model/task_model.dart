@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:to_do_app/Core/services/column_key.dart';
 
 class TaskModel {
@@ -8,6 +9,7 @@ class TaskModel {
   int state;
   final String title;
   final String note;
+  final int color;
 
   TaskModel({
     required this.title,
@@ -16,6 +18,7 @@ class TaskModel {
     required this.endTime,
     required this.startTime,
     required this.state,
+    required this.color,
     this.id,
   });
 
@@ -27,6 +30,7 @@ class TaskModel {
         date: date[ColumnKey.date],
         endTime: date[ColumnKey.endTime],
         startTime: date[ColumnKey.startTime],
+        color: date[ColumnKey.color],
         state: date[ColumnKey.state]);
   }
 }

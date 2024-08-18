@@ -20,6 +20,14 @@ class TaskCubit extends Cubit<TaskState> {
 
   static TaskCubit instances = TaskCubit._();
   static List<TaskModel> allTask = [];
+  List<Color> allColors = [
+    AppColor.red,
+    AppColor.lightGreen,
+    AppColor.darkGreen,
+    AppColor.deepBlue,
+    AppColor.brown,
+    AppColor.purble,
+  ];
   TaskCubit._() : super(TaskInitial());
 
   void addTask() async {
@@ -32,7 +40,7 @@ class TaskCubit extends Cubit<TaskState> {
         ColumnKey.endTime: endTime.text.toString(),
         ColumnKey.date: date.text.toString(),
         ColumnKey.state: 0,
-        ColumnKey.color: AppColor.red.value,
+        ColumnKey.color: allColors[selectedColor].value,
       }).then((value) {
         loadAllTask(
           date: formateDate(DateTime.now()),

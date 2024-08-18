@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:to_do_app/Core/style/colors/app_color.dart';
 import 'package:to_do_app/Core/utils/app_string.dart';
 import 'package:to_do_app/Feature/home/data/model/task_model.dart';
 import 'package:to_do_app/Feature/home/presentation/views/bottom_sheet_view.dart';
@@ -24,7 +23,7 @@ class TaskItemWidget extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16),
-          color: AppColor.red,
+          color: Color(task.color),
         ),
         padding: const EdgeInsets.all(15),
         child: Row(
