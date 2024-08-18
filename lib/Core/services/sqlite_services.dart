@@ -53,7 +53,7 @@ class AppData {
   }
 
   //Delete all of DB
-  static deleteDB(int id) async {
+  static deleteDB({required int id}) async {
     Database? dbClient = await db;
     var result = await dbClient!
         .rawDelete("DELETE FROM Task WHERE ${ColumnKey.id} = $id");

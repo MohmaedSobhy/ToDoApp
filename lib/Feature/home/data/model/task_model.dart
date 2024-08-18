@@ -5,7 +5,7 @@ class TaskModel {
   final String startTime;
   final String endTime;
   final String date;
-  final int state;
+  int state;
   final String title;
   final String note;
 

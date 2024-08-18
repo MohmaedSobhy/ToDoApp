@@ -16,7 +16,9 @@ class TaskItemWidget extends StatelessWidget {
         showModalBottomSheet(
             context: context,
             builder: (context) {
-              return const BottomSheetView();
+              return BottomSheetView(
+                id: task.id!,
+              );
             });
       },
       child: Container(

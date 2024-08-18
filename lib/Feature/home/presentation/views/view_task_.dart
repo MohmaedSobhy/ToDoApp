@@ -12,7 +12,7 @@ class ViewTaskForToday extends StatelessWidget {
     return BlocBuilder<TaskCubit, TaskState>(
       builder: (context, state) {
         if (TaskCubit.allTask.isNotEmpty) {
-          return const AllTaskListView();
+          return AllTaskListView();
         }
 
         return const NoTaskForCurrentDayWidget();
