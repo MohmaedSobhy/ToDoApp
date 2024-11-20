@@ -20,7 +20,5 @@ Stay organized and never miss a task with the **To-Do Scheduler App**! ✅
 ✨ **Intuitive Design**
 - Enjoy a sleek, user-friendly interface designed to make scheduling your tasks a breeze.
 
-🚀 **Get Started Today**
-- Download the **To-Do Scheduler App** now and take control of your time like never before!
-
-Stay productive, organized, and stress-free with the **To-Do Scheduler App**! 🗂️
+🎥 **Watch the Demo**
+- See the app in action! [Click here to watch the demo video](https://www.youtube.com/watch?v=tiGRLOWtjmY&ab_channel=MohamedSobhy).
